@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ma Liste de Tâches</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="conteneur-principal">
+        <!-- En-tête avec titre et compteur -->
+        <header class="entete">
+            <h1 class="titre-principal">✨ Mes Tâches Quotidiennes</h1>
+            <div class="compteur-taches">
+                <span id="taches-restantes">0</span> tâche(s) restante(s)
+            </div>
+        </header>
+
+        <!-- Zone d'ajout de nouvelles tâches -->
+        <section class="zone-ajout">
+            <div class="conteneur-saisie">
+                <input 
+                    type="text" 
+                    id="nouvelle-tache" 
+                    class="champ-saisie"
+                    placeholder="Ajouter une nouvelle tâche..."
+                    maxlength="100"
+                >
+                <button id="bouton-ajouter" class="bouton-ajouter">
+                    <span class="icone-plus">+</span>
+                    Ajouter
+                </button>
+            </div>
+        </section>
+
+        <!-- Filtres pour organiser les tâches -->
+        <nav class="filtres">
+            <button class="bouton-filtre actif" data-filtre="toutes">
+                Toutes (<span id="compteur-toutes">0</span>)
+            </button>
+            <button class="bouton-filtre" data-filtre="actives">
+                Actives (<span id="compteur-actives">0</span>)
+            </button>
+            <button class="bouton-filtre" data-filtre="terminees">
+                Terminées (<span id="compteur-terminees">0</span>)
+            </button>
+        </nav>
+
+        <!-- Liste principale des tâches -->
+        <main class="zone-taches">
+            <ul id="liste-taches" class="liste-taches">
+                <!-- Les tâches seront ajoutées ici dynamiquement -->
+            </ul>
+            
+            <!-- Message affiché quand la liste est vide -->
+            <div id="message-vide" class="message-vide">
+                <div class="icone-vide">📝</div>
+                <p>Aucune tâche pour le moment</p>
+                <small>Ajoutez votre première tâche ci-dessus !</small>
+            </div>
+        </main>
+
+        <!-- Actions globales -->
+        <footer class="actions-globales">
+            <button id="bouton-tout-supprimer" class="bouton-secondaire">
+                🗑️ Supprimer tout
+            </button>
+            <button id="bouton-supprimer-terminees" class="bouton-secondaire">
+                ✅ Supprimer les terminées
+            </button>
+        </footer>
+    </div>
+
+    
+<footer>
+    <script src="script.js"></script>
+</footer>
+    
+</body>
+</html>

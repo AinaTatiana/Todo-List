@@ -1,0 +1,384 @@
+
+        /* === STYLES DE BASE === */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            color: #2c3e50;
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .conteneur-principal {
+            max-width: 600px;
+            margin: 0 auto;
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 20px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            backdrop-filter: blur(10px);
+        }
+
+        /* === EN-TÊTE === */
+        .entete {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            padding: 30px 25px;
+            text-align: center;
+            color: white;
+        }
+
+        .titre-principal {
+            font-size: 1.8rem;
+            font-weight: 300;
+            margin-bottom: 10px;
+            letter-spacing: 0.5px;
+        }
+
+        .compteur-taches {
+            font-size: 0.9rem;
+            opacity: 0.9;
+            background: rgba(255, 255, 255, 0.2);
+            padding: 8px 16px;
+            border-radius: 20px;
+            display: inline-block;
+        }
+
+        /* === ZONE D'AJOUT === */
+        .zone-ajout {
+            padding: 25px;
+            background: rgba(255, 255, 255, 0.8);
+        }
+
+        .conteneur-saisie {
+            display: flex;
+            gap: 12px;
+            align-items: center;
+        }
+
+        .champ-saisie {
+            flex: 1;
+            padding: 15px 20px;
+            border: 2px solid #e1e8ed;
+            border-radius: 25px;
+            font-size: 1rem;
+            background: white;
+            transition: all 0.3s ease;
+            outline: none;
+        }
+
+        .champ-saisie:focus {
+            border-color: #667eea;
+            box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+            transform: translateY(-1px);
+        }
+
+        .champ-saisie::placeholder {
+            color: #95a5a6;
+        }
+
+        .bouton-ajouter {
+            padding: 15px 25px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: none;
+            border-radius: 25px;
+            font-size: 0.95rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            white-space: nowrap;
+        }
+
+        .bouton-ajouter:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(102, 126, 234, 0.3);
+        }
+
+        .bouton-ajouter:active {
+            transform: translateY(0);
+        }
+
+        .icone-plus {
+            font-size: 1.2rem;
+            font-weight: bold;
+        }
+
+        /* === FILTRES === */
+        .filtres {
+            display: flex;
+            padding: 0 25px;
+            background: rgba(255, 255, 255, 0.8);
+            gap: 8px;
+        }
+
+        .bouton-filtre {
+            flex: 1;
+            padding: 12px 16px;
+            background: transparent;
+            border: 2px solid #e1e8ed;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            color: #7f8c8d;
+        }
+
+        .bouton-filtre:hover {
+            background: rgba(102, 126, 234, 0.05);
+            border-color: #667eea;
+        }
+
+        .bouton-filtre.actif {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border-color: transparent;
+        }
+
+        /* === ZONE DES TÂCHES === */
+        .zone-taches {
+            padding: 25px;
+            min-height: 200px;
+        }
+
+        .liste-taches {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .tache {
+            background: white;
+            border-radius: 15px;
+            padding: 0;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+            transition: all 0.3s ease;
+            border: 2px solid transparent;
+        }
+
+        .tache:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+            border-color: rgba(102, 126, 234, 0.2);
+        }
+
+        .contenu-tache {
+            display: flex;
+            align-items: center;
+            padding: 20px;
+            gap: 15px;
+        }
+
+        /* === CHECKBOX PERSONNALISÉE === */
+        .conteneur-checkbox {
+            position: relative;
+            cursor: pointer;
+            user-select: none;
+        }
+
+        .conteneur-checkbox input {
+            position: absolute;
+            opacity: 0;
+            cursor: pointer;
+        }
+
+        .checkmark {
+            width: 24px;
+            height: 24px;
+            background: #ecf0f1;
+            border-radius: 50%;
+            border: 2px solid #bdc3c7;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+        }
+
+        .conteneur-checkbox:hover .checkmark {
+            border-color: #667eea;
+            background: rgba(102, 126, 234, 0.1);
+        }
+
+        .conteneur-checkbox input:checked ~ .checkmark {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            border-color: #667eea;
+        }
+
+        .conteneur-checkbox input:checked ~ .checkmark::after {
+            content: '✓';
+            color: white;
+            font-weight: bold;
+            font-size: 14px;
+        }
+
+        /* === TEXTE DES TÂCHES === */
+        .texte-tache {
+            flex: 1;
+            font-size: 1rem;
+            line-height: 1.4;
+            transition: all 0.3s ease;
+        }
+
+        .tache.terminee .texte-tache {
+            text-decoration: line-through;
+            color: #95a5a6;
+            opacity: 0.7;
+        }
+
+        /* === BOUTON SUPPRIMER === */
+        .bouton-supprimer {
+            width: 32px;
+            height: 32px;
+            border: none;
+            background: rgba(231, 76, 60, 0.1);
+            color: #e74c3c;
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 18px;
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+            opacity: 0.7;
+        }
+
+        .bouton-supprimer:hover {
+            background: #e74c3c;
+            color: white;
+            transform: scale(1.1);
+            opacity: 1;
+        }
+
+        /* === MESSAGE LISTE VIDE === */
+        .message-vide {
+            text-align: center;
+            padding: 60px 20px;
+            color: #95a5a6;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .icone-vide {
+            font-size: 4rem;
+            opacity: 0.5;
+        }
+
+        .message-vide p {
+            font-size: 1.2rem;
+            font-weight: 300;
+        }
+
+        .message-vide small {
+            font-size: 0.9rem;
+        }
+
+        /* === ACTIONS GLOBALES === */
+        .actions-globales {
+            padding: 25px;
+            background: rgba(255, 255, 255, 0.8);
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+            border-top: 1px solid rgba(0, 0, 0, 0.05);
+        }
+
+        .bouton-secondaire {
+            padding: 12px 20px;
+            background: rgba(52, 73, 94, 0.1);
+            color: #34495e;
+            border: 2px solid rgba(52, 73, 94, 0.2);
+            border-radius: 20px;
+            font-size: 0.9rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .bouton-secondaire:hover {
+            background: rgba(52, 73, 94, 0.15);
+            transform: translateY(-1px);
+        }
+
+        /* === RESPONSIVE === */
+        @media (max-width: 768px) {
+            body {
+                padding: 10px;
+            }
+
+            .conteneur-principal {
+                margin: 0;
+                border-radius: 15px;
+            }
+
+            .conteneur-saisie {
+                flex-direction: column;
+                gap: 15px;
+            }
+
+            .bouton-ajouter {
+                width: 100%;
+                justify-content: center;
+            }
+
+            .filtres {
+                flex-direction: column;
+                gap: 10px;
+            }
+
+            .actions-globales {
+                flex-direction: column;
+            }
+
+            .titre-principal {
+                font-size: 1.5rem;
+            }
+        }
+
+        /* === ANIMATIONS === */
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .tache {
+            animation: fadeIn 0.3s ease;
+        }
+
+        /* === SCROLLBAR PERSONNALISÉE === */
+        .zone-taches::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        .zone-taches::-webkit-scrollbar-track {
+            background: rgba(0, 0, 0, 0.05);
+            border-radius: 4px;
+        }
+
+        .zone-taches::-webkit-scrollbar-thumb {
+            background: rgba(102, 126, 234, 0.3);
+            border-radius: 4px;
+        }
+
+        .zone-taches::-webkit-scrollbar-thumb:hover {
+            background: rgba(102, 126, 234, 0.5);
+        }
+        
