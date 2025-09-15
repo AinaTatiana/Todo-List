@@ -38,5 +38,3 @@ git clone https://github.com/username/todo-list.git
 ```
 
 ---
-
-⭐ **Donnez une étoile si ce projet vous a plu !**
